@@ -1,4 +1,5 @@
 import AddToBag from "@/app/components/AddToBag";
+import CheckoutNow from "@/app/components/CheckoutNow";
 import ImageGallery from "@/app/components/ImageGallery";
 import { fullProduct } from "@/app/interface";
 import { client } from "@/app/lib/sanity";
@@ -19,6 +20,7 @@ async function getData(slug: string) {
   const data = await client.fetch(query);
   return data;
 }
+export const dynamic = 'force-dynamic'
 export default async function ProductPge({
   params,
 }: {
@@ -73,6 +75,15 @@ export default async function ProductPge({
 
             <div className="flex gap-2.5 ">
               <AddToBag
+                currency="USD"
+                description={data.description}
+                image={data.image[0]}
+                name={data.name}
+                price={data.price}
+                key={data._id}
+                price_id={data.price_id}
+              />
+              <CheckoutNow
                 currency="USD"
                 description={data.description}
                 image={data.image[0]}
