@@ -12,10 +12,10 @@ export default function CheckoutNow({
   price,
   price_id,
 }: ProductCart) {
-  const {checkoutSingleItem } = useShoppingCart();
+  const { checkoutSingleItem } = useShoppingCart();
 
-  function buyNow(price_id:string){
-    checkoutSingleItem(price_id)
+  function buyNow(price_id: string) {
+    checkoutSingleItem(price_id);
   }
   const product = {
     name: name,
@@ -27,11 +27,12 @@ export default function CheckoutNow({
   };
   return (
     <Button
+      variant="outline"
       onClick={() => {
-        buyNow(product.price_id)
+        buyNow(product.price_id);
       }}
     >
-      Add to Cart
+      Checkout
     </Button>
   );
 }
